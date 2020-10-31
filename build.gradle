@@ -29,6 +29,7 @@ subprojects {
         annotationProcessor 'org.projectlombok:lombok'
         implementation 'org.springframework.boot:spring-boot-starter-actuator'
         implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
     }
 
     task initSourceFolders {
@@ -53,6 +54,13 @@ project(':core') {
 
     dependencies {
         compile('com.h2database:h2:1.4.199')
+        testImplementation('org.springframework.boot:spring-boot-starter-test') {
+            exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+        }
+    }
+
+    test {
+        useJUnitPlatform()
     }
 }
 
