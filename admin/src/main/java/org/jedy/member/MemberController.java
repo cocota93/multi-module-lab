@@ -3,30 +3,24 @@ package org.jedy.member;
 import lombok.RequiredArgsConstructor;
 import org.jedy.core.member.Member;
 import org.jedy.core.member.MemberRepository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/members")
 @RequiredArgsConstructor
 public class MemberController {
 
   private final MemberRepository memberRepository;
 
+
   @GetMapping
-  public List<Member> getMembers() {
-    return memberRepository.findAll();
+  public String getPage(Model model) {
+    model.addAttribute("name", "jedy");
+    return "hihi";
   }
-
-  @PostMapping
-  public Member create() {
-    final Member member = new Member("test");
-    return memberRepository.save(member);
-  }
-
 
 }
