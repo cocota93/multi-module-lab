@@ -3,6 +3,12 @@
 /admin/build/
 /admin/build/classes/java/main/
 /admin/out/
+/admin/src/main/generated/
+/api/build/
+/api/build/classes/java/main/
+/api/out/
+/api/src/main/generated/
 /core/build/
 /core/build/classes/java/main/
 /core/out/
+/core/src/main/generated/

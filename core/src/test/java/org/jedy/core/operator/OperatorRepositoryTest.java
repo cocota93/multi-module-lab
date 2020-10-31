@@ -1,5 +1,6 @@
 package org.jedy.core.operator;
 
+import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -26,8 +27,24 @@ class OperatorRepositoryTest {
         em.flush();
 
         Operator findOperator = operatorRepository.findById(1L).get();
-        assertEquals(jedy,findOperator);
-        System.out.println("operator : " + findOperator);
+        assertEquals(jedy.getLoginId(),findOperator.getLoginId());
+    }
+
+    @Test
+    @Commit
+    public void qoperatorCreate() throws Exception{
+        Operator jedy = new Operator("jedy", "1234");
+        operatorRepository.save(jedy);
+        em.flush();
+
+        JPAQueryFactory queryFactory = new JPAQueryFactory(em);
+        QOperator qOperator = QOperator.operator;
+
+        Operator findOperator = queryFactory
+                .select(qOperator)
+                .from(qOperator)
+                .fetchOne();
+        assertEquals(jedy.getLoginId(),findOperator.getLoginId());
     }
 
 }
