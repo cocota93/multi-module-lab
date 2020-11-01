@@ -1,8 +1,8 @@
 package org.jedy.member;
 
 import lombok.RequiredArgsConstructor;
-import org.jedy.core.member.Member;
-import org.jedy.core.member.MemberRepository;
+import org.jedy.core.domain.member.Member;
+import org.jedy.core.domain.member.MemberRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

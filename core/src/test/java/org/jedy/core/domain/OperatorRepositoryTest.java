@@ -1,6 +1,9 @@
-package org.jedy.core.operator;
+package org.jedy.core.domain;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import org.jedy.core.domain.operator.Operator;
+import org.jedy.core.domain.operator.OperatorRepository;
+import org.jedy.core.domain.operator.QOperator;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -9,13 +12,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 @Transactional
 class OperatorRepositoryTest {
 
-    @Autowired OperatorRepository operatorRepository;
+    @Autowired
+    OperatorRepository operatorRepository;
     @Autowired EntityManager em;
 
 

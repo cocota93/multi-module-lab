@@ -1,11 +1,10 @@
-package org.jedy.core.operator;
+package org.jedy.core.domain.operator;
 
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.IdentityHashMap;
 
 @Entity
 @Getter

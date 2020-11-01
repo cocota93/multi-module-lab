@@ -1,4 +1,5 @@
-package org.jedy.core.member;
+package org.jedy.core.domain.member;
+
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
