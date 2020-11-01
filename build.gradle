@@ -90,6 +90,7 @@ project(':core') {
 project(':api') {
     dependencies {
         compile project(':core')
+        compile 'org.springdoc:springdoc-openapi-ui:1.4.8'
     }
 }
 
