@@ -1,4 +1,4 @@
-package org.jedy.operator.controller;
+package org.jedy.security;
 
 import org.jedy.core.domain.operator.Operator;
 import org.jedy.core.domain.operator.OperatorAuth;
@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class OperatorService implements UserDetailsService {
+public class CustomAuthService implements UserDetailsService {
 
     @Autowired private OperatorRepository operatorRepository;
 
