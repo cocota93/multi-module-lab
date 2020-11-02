@@ -1,7 +1,8 @@
 package org.jedy.operator.controller;
 
-import net.bytebuddy.asm.Advice;
 import org.jedy.core.domain.operator.Operator;
+import org.jedy.core.domain.operator.OperatorAuth;
+import org.jedy.core.domain.operator.OperatorAuthType;
 import org.jedy.core.domain.operator.OperatorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -19,6 +20,7 @@ public class OperatorController {
     @ResponseBody
     public Operator create(){
         Operator operator = new Operator("jedy", passwordEncoder.encode("1234"));
+        operator.addAuthority(new OperatorAuth(OperatorAuthType.PAY_MANAGER));
 
         return operatorRepository.save(operator);
     }
