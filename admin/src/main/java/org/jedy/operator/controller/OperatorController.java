@@ -4,6 +4,7 @@ import org.jedy.core.domain.operator.Operator;
 import org.jedy.core.domain.operator.OperatorAuth;
 import org.jedy.core.domain.operator.OperatorAuthType;
 import org.jedy.core.domain.operator.OperatorRepository;
+import org.jedy.operator.dto.OperatorCreateResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -18,11 +19,11 @@ public class OperatorController {
 
     @GetMapping("/create")
     @ResponseBody
-    public Operator create(){
+    public OperatorCreateResponse create(){
         Operator operator = new Operator("jedy", passwordEncoder.encode("1234"));
         operator.addAuthority(new OperatorAuth(OperatorAuthType.PAY_MANAGER));
-
-        return operatorRepository.save(operator);
+        operatorRepository.save(operator);
+        return new OperatorCreateResponse(operator);
     }
 
 }
