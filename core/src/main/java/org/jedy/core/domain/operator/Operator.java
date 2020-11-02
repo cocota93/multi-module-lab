@@ -18,7 +18,7 @@ public class Operator {
     private String loginId;
 
 //    @JsonIgnore
-    @Column(updatable = false, nullable = false, length = 20)
+//    @Column(updatable = false, nullable = false)
     private String password;
 
     public Operator(String loginId, String password) {
