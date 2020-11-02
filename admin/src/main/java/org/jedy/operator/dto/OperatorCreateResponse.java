@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.jedy.core.domain.operator.Operator;
+import org.jedy.core.domain.operator.OperatorAuth;
 import org.jedy.core.domain.operator.OperatorAuthType;
 
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ public class OperatorCreateResponse {
         this.id = operator.getId();
         this.loginId = operator.getLoginId();
         authList = operator.getAuthorityList().stream()
-                .map(auth -> auth.getType())
+                .map(OperatorAuth::getType)
                 .collect(Collectors.toList());
     }
 }

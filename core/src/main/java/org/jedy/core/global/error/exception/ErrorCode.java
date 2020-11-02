@@ -21,9 +21,16 @@ public enum ErrorCode {
 
     // Coupon
     COUPON_ALREADY_USE(400, "CO001", "Coupon was already used"),
-    COUPON_EXPIRE(400, "CO002", "Coupon was already expired")
+    COUPON_EXPIRE(400, "CO002", "Coupon was already expired"),
+
+    // Operator
+    ADD_AUTH_OWNER_NOT_EQUAL(400, "OPERATOR_00001", "owner of added auth not equal")
+
 
     ;
+
+
+
     private final String code;
     private final String message;
     private int status;

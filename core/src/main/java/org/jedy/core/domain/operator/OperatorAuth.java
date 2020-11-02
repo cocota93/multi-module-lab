@@ -31,12 +31,9 @@ public class OperatorAuth {
     @JoinColumn(name = "owner_id")
     private Operator owner;
 
-    public OperatorAuth(OperatorAuthType type) {
+    public OperatorAuth(Operator owner, OperatorAuthType type) {
+        this.owner = owner;
         this.type = type;
     }
 
-    public void changeOwner(Operator owner){
-        this.owner = owner;
-        this.owner.getAuthorityList().add(this);
-    }
 }

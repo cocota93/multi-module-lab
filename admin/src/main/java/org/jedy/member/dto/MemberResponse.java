@@ -4,7 +4,6 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.jedy.core.domain.member.Member;
-import org.omg.CORBA.WStringSeqHelper;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)

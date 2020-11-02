@@ -21,7 +21,7 @@ public class OperatorController {
     @ResponseBody
     public OperatorCreateResponse create(){
         Operator operator = new Operator("jedy", passwordEncoder.encode("1234"));
-        operator.addAuthority(new OperatorAuth(OperatorAuthType.PAY_MANAGER));
+        operator.addAuthority(new OperatorAuth(operator, OperatorAuthType.PAY_MANAGER));
         operatorRepository.save(operator);
         return new OperatorCreateResponse(operator);
     }
