@@ -24,7 +24,7 @@ public class MemberApiController {
 
     @PostMapping
     public Member create() {
-        final Member member = new Member("test");
+        final Member member = new Member("jedy", "1234", "ryong");
         return memberRepository.save(member);
     }
 }

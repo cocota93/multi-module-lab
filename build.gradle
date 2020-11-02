@@ -100,6 +100,11 @@ project(':admin') {
         compile project(':core')
         implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
         implementation 'org.springframework.boot:spring-boot-devtools'
+        implementation 'org.springframework.boot:spring-boot-starter-security'
+        testImplementation 'org.springframework.security:spring-security-test'
+        testImplementation('org.springframework.boot:spring-boot-starter-test') {
+            exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+        }
     }
 }
 
