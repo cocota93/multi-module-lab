@@ -3,6 +3,7 @@ package org.jedy.core.global.error;
 import lombok.extern.slf4j.Slf4j;
 import org.jedy.core.global.error.exception.BusinessException;
 import org.jedy.core.global.error.exception.ErrorCode;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindException;
@@ -16,6 +17,7 @@ import java.nio.file.AccessDeniedException;
 
 @ControllerAdvice
 @Slf4j
+@Order(1000)
 public class GlobalExceptionHandler {
 
     /**

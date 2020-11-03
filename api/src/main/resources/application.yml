@@ -15,6 +15,8 @@ spring:
 #        format_sql: true
 #        use_sql_comments: true
 
+  jwt.secret: govlepe1@$&
+
 logging:
   level:
     org.hibernate.SQL: debug
@@ -23,4 +25,4 @@ logging:
 springdoc:
   swagger-ui:
     path: /swagger-ui.html
-  paths-to-match: /api/*
+  paths-to-match: /api/**
