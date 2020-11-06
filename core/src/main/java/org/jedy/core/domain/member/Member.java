@@ -10,6 +10,7 @@ import org.jedy.core.global.error.exception.BusinessException;
 import org.jedy.core.global.error.exception.ErrorCode;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,7 +54,7 @@ public class Member {
     this.email = email;
   }
 
-  public void addAuthority(MemberAuth memberAuth){
+  public void addAuthority(@NotNull MemberAuth memberAuth){
     if(memberAuth == null || this != memberAuth.getOwner()){
       //TODO 별도로 예외를 만들어서 발생시킬려 했더니 의존성 역전 발생. 어떻게 해야될까?
 //            throw new MemberAuthAddException();

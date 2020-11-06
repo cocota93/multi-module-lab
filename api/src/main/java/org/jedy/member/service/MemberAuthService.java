@@ -12,6 +12,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -25,6 +26,16 @@ public class MemberAuthService {
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtTokenProvider jwtTokenProvider;
+
+
+    @GetMapping(value = "/create")
+    public MemberCreateResponse testCreate() {
+        Member member = new Member("jedy", passwordEncoder.encode("1234"), "ryong", "cocota93@gmail.com");
+        member.addAuthority(new MemberAuth(member, MemberAuthType.COMMON_USER));
+        memberRepository.save(member);
+        return new MemberCreateResponse(member);
+
+    }
 
     public MemberCreateResponse signup(@Valid ReqSignupMember reqSignupMember) {
         Long memberId = defaultSignupMember(reqSignupMember);
@@ -46,10 +57,8 @@ public class MemberAuthService {
 
 
     public String login(String loginId, String password) {
-        Member loginMember = memberRepository.findFetchAuthByLoginId(loginId);
-        if (loginMember == null || !passwordEncoder.matches(password, loginMember.getPassword())){
-            throw new MemberLoginFailException(loginId);
-        }
+        Member loginMember = memberRepository.findFetchAuthByLoginId(loginId)
+                .orElseThrow(() -> new MemberLoginFailException(loginId));
 
         List<String> authorityList = loginMember.getAuthorityList().stream()
                 .map(auth -> auth.getType().getAuthority())

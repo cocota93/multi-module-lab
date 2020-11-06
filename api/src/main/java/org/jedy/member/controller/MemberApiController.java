@@ -2,24 +2,12 @@ package org.jedy.member.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.jedy.core.domain.member.Member;
-import org.jedy.core.domain.member.MemberAuth;
-import org.jedy.core.domain.member.MemberAuthType;
-import org.jedy.core.domain.member.MemberRepository;
 import org.jedy.member.dto.response.MemberCreateResponse;
 import org.jedy.core.domain.member.ReqSignupMember;
-import org.jedy.member.exception.MemberLoginFailException;
 import org.jedy.member.service.MemberAuthService;
-import org.jedy.security.JwtTokenProvider;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/members")
@@ -29,12 +17,18 @@ public class MemberApiController {
 
     private final MemberAuthService memberAuthService;
 
+
+    @GetMapping(value = "/create")
+    public MemberCreateResponse create() {
+        return memberAuthService.testCreate();
+    }
+
+
     @PostMapping(value = "/signup")
     public MemberCreateResponse signup(@Valid ReqSignupMember reqSignupMember) {
         MemberCreateResponse member = memberAuthService.signup(reqSignupMember);
         return member;
     }
-
 
     @PostMapping(value = "/login")
     public String login(@RequestParam String loginId, @RequestParam String password) {
