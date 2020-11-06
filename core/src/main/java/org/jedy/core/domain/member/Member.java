@@ -2,6 +2,7 @@ package org.jedy.core.domain.member;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.jedy.core.domain.operator.OperatorAuth;
@@ -43,6 +44,8 @@ public class Member {
   @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
   private List<MemberAuth> authorityList = new ArrayList<>();
 
+
+  @Builder(builderClassName = "BySignup", builderMethodName = "BySignup")
   public Member(String loginId, String password, String name, String email) {
     this.loginId = loginId;
     this.password = password;

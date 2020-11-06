@@ -1,4 +1,4 @@
-package org.jedy.member;
+package org.jedy.member.dto.response;
 
 import lombok.AccessLevel;
 import lombok.Data;
@@ -6,6 +6,9 @@ import lombok.NoArgsConstructor;
 import org.jedy.core.domain.member.Member;
 import org.jedy.core.domain.member.MemberAuth;
 import org.jedy.core.domain.member.MemberAuthType;
+import org.jedy.core.domain.operator.Operator;
+import org.jedy.core.domain.operator.OperatorAuth;
+import org.jedy.core.domain.operator.OperatorAuthType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +16,8 @@ import java.util.stream.Collectors;
 
 @Data
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class MemberResponse {
+public class MemberCreateResponse {
+
     private Long id;
 
     private String loginId;
@@ -24,7 +28,7 @@ public class MemberResponse {
 
     private List<MemberAuthType> authList = new ArrayList<>();
 
-    public MemberResponse(Member member) {
+    public MemberCreateResponse(Member member) {
         this.id = member.getId();
         this.loginId = member.getLoginId();
         this.name = member.getName();
